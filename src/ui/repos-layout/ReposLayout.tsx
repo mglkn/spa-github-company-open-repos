@@ -2,53 +2,53 @@ import './style.css';
 
 import * as React from 'react';
 
-import { IRepo } from '../../store/reducers/github';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { RootState } from '../../store';
+import { nextPage } from '../../store/reducers/github';
 
 import ErrorMessage from '../error-message/ErrorMessage';
 import ReposList from '../repos-list/ReposList';
 import LoadMoreButton from '../load-more-button/LoadMoreButton';
 
-const testRepos: IRepo[] = [
-  {
-    id: '1',
-    name: "Hello there",
-    url: "http://aksdjflkajsdk",
-    stargazers_count: 20,
-    watchers_count: 30,
-    forks_count: 2,
-  },
-  {
-    id: '2',
-    name: "Hello there",
-    url: "http://aksdjflkajsdk",
-    stargazers_count: 20,
-    watchers_count: 30,
-    forks_count: 2,
-  },
-  {
-    id: '3',
-    name: "Hello there",
-    url: "http://aksdjflkajsdk",
-    stargazers_count: 20,
-    watchers_count: 30,
-    forks_count: 2,
-  },
-]
-
 const ReposLayout: React.FC = () => {
-  // return (
-  //   <ErrorMessage message="Some error occured" />
-  // );
+  const dispatch = useDispatch();
+  const { repos, error, reposCount, isAppendReposFetching } = useSelector(
+    (state: RootState) => state.github
+  );
+
+  const loadMoreButtonHandler = (e: React.MouseEvent) => {
+    e.preventDefault();
+    dispatch(nextPage());
+  }
+
+  const loadMoreButtonSign = `${repos.length}/${reposCount}`
+  const isLoadMoreButtonDisabled = isAppendReposFetching || repos.length >= reposCount;
+
+  if (error !== null) {
+    return (
+      <ErrorMessage message={error} />
+    );
+  }
+
+  if (repos.length === 0) {
+    return (
+      <div>no any repos</div>
+    )
+  }
 
   return (
     <div className="repos-layout">
 
       <div className="repos-layout__list">
-        <ReposList repos={testRepos} />
+        <ReposList repos={repos} />
       </div>
 
       <div className="repos-layout__load-more-button">
-        <LoadMoreButton isLoading={false} reposCount={"30/200"} />
+        <LoadMoreButton
+          onClick={loadMoreButtonHandler}
+          isLoading={isLoadMoreButtonDisabled}
+          reposCount={loadMoreButtonSign} />
       </div>
 
     </div>

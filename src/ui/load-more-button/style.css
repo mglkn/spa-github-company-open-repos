@@ -27,7 +27,7 @@
 .load-more-button:disabled {
   opacity: 0.6;
 
-  cursor: wait;
+  cursor: not-allowed;
 }
 
 .load-more-button:focus {

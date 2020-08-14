@@ -16,7 +16,7 @@ const ReposItem: React.FC<{ item: IRepo }> = ({ item }) => {
           className="repos-item__header-link"
           target="blank"
           rel="noopener noreferrer"
-          href={item.url}>{item.name}</a>
+          href={item.html_url}>{item.name}</a>
       </h4>
 
       <div className="repos-item__info">

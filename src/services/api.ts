@@ -7,7 +7,6 @@ export const fetchOrg = async (orgName: string) => {
     const { data } = await axios.get(`https://api.github.com/orgs/${orgName}`)
     return data;
   } catch (e) {
-    console.log(e.response);
     if (e.response !== undefined && e.response.status === 404) {
       throw new Error(`Organization ${orgName} not found`);
     }
