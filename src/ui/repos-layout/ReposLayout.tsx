@@ -47,7 +47,7 @@ const ReposLayout: React.FC = () => {
         <ReposList repos={testRepos} />
       </div>
 
-      <div>
+      <div className="repos-layout__load-more-button">
         <LoadMoreButton isLoading={false} reposCount={"30/200"} />
       </div>
 

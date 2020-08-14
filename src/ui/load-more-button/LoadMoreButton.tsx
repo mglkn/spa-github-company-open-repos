@@ -1,3 +1,5 @@
+import './style.css';
+
 import * as React from 'react';
 
 type IProps = {
@@ -7,7 +9,9 @@ type IProps = {
 
 const LoadMoreButton: React.FC<IProps> = ({ isLoading, reposCount }) => {
   return (
-    <button disabled={isLoading}>Load more {reposCount}</button>
+    <button
+      className="load-more-button"
+      disabled={isLoading}>Load more {reposCount}</button>
   );
 }
 

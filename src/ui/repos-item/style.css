@@ -1,0 +1,64 @@
+.repos-item {
+  width: 100%;
+
+  padding: 10px;
+  margin-bottom: 20px;
+
+  border-radius: 3px;
+
+  background-color: rgb(250, 250, 250);
+}
+
+.repos-item__header {
+  font-size: 30px;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.repos-item__header-link {
+  text-decoration: none;
+
+  color: rgb(95, 95, 95);
+
+  outline: none;
+}
+
+.repos-item__header-link:hover {
+  opacity: 0.9;
+}
+
+.repos-item__header-link:focus {
+  outline: auto;
+  outline-offset: 1px;
+  outline-color: rgb(187, 129, 241);
+}
+
+.repos-item__info {
+  display: inline-flex;
+
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.repos-item__info-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.repos-item__info-item {
+  display: inline;
+
+  line-height: inherit;
+}
+
+.repos-icon {
+  display: inline;
+  vertical-align: middle;
+
+  margin-right: 5px;
+}
+
+.repos-item__info-value {
+  display: inline;
+  vertical-align: middle;
+}

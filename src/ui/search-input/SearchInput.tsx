@@ -8,7 +8,7 @@ const SearchInput: React.FC = () => {
       <input
         className="search-input__input"
         type="text"
-        placeholder="ORGANIZATION" />
+        placeholder="type organization name here" />
     </div>
   );
 }

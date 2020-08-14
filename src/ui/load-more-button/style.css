@@ -1,0 +1,35 @@
+.load-more-button {
+  display: block;
+  width: 100%;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  border: none;
+  border-radius: 40px;
+
+  color: white;
+  background-color: blueviolet;
+
+  outline: none;
+
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.load-more-button:hover {
+  opacity: 0.9;
+}
+
+.load-more-button:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+}
+
+.load-more-button:focus {
+  box-shadow: 0px 0px 5px 1px blueviolet;
+}
