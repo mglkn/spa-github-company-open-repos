@@ -1,0 +1,21 @@
+.search-input {
+  width: 100%;
+}
+
+.search-input__input {
+  width: 100%;
+
+  padding: 10px 15px;
+
+  border: 2px solid blueviolet;
+  border-radius: 3px;
+  outline: none;
+
+  font-size: 24px;
+}
+
+.search-input__input:focus {
+  outline: auto;
+  outline-offset: 1px;
+  outline-color: rgb(187, 129, 241);
+}

@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-const ReposList: React.FC = () => {
+import { IRepo } from '../../store/reducers/github';
+import ReposItem from '../repos-item/ReposItem';
+
+const ReposList: React.FC<{ repos: IRepo[] }> = ({ repos }) => {
   return (
-    <div>repos list</div>
+    <ul>
+      {repos.map(repo => <ReposItem key={repo.id} item={repo} />)}
+    </ul>
   );
 }
 

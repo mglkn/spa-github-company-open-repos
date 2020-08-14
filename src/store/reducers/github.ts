@@ -1,6 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
-type IRepo = {
+export type IRepo = {
   id: string;
   name: string;
   url: string;

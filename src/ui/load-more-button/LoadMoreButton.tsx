@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-const LoadMoreButton: React.FC = () => {
+type IProps = {
+  isLoading: boolean;
+  reposCount: string;
+}
+
+const LoadMoreButton: React.FC<IProps> = ({ isLoading, reposCount }) => {
   return (
-    <div>Load more button</div>
+    <button disabled={isLoading}>Load more {reposCount}</button>
   );
 }
 

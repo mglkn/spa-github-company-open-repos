@@ -42,6 +42,12 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/react-redux": "^7.1.9"
-  }
+    "@types/react-redux": "^7.1.9",
+    "autoprefixer": "^9.8.6",
+    "normalize.css": "^8.0.1"
+  },
+  "browserList": [
+    "> 1%",
+    "last 3 version"
+  ]
 }

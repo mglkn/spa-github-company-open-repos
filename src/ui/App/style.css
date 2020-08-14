@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1000px;
+  height: 100vh;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app__search-input {
+  width: 100%;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.app__repos {
+  flex-grow: 1;
+}
+
+@media (max-width: 1000px) {
+  .app {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
