@@ -31,6 +31,9 @@ function* fetchReposEffect() {
 }
 
 function* fetchOrgEffect(action: any) {
+  const orgName = action.payload;
+  if (orgName.length === 0) return;
+
   try {
     const { public_repos } = yield call(fetchOrg, action.payload);
     yield put(setReposCount(public_repos));

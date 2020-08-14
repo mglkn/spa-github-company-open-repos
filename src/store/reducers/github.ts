@@ -41,13 +41,15 @@ const initialState: IState = {
 const github = createReducer(initialState, {
   [changeSearchField.type]: (state, action) => {
     state.orgName = action.payload;
-    state.isReposFetching = true;
+    state.isReposFetching =
+      action.payload.length === 0 ? false : true;
     state.page = 1;
     state.error = null;
   },
   [setRepos.type]: (state, action) => {
     state.repos = action.payload;
     state.isReposFetching = false;
+    state.isAppendReposFetching = false;
     state.page = 1;
   },
   [appendRepos.type]: (state, action) => {

@@ -7,13 +7,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { nextPage } from '../../store/reducers/github';
 
-import ErrorMessage from '../error-message/ErrorMessage';
+import ReposLayoutMessage from '../repos-layout-message/ReposLayoutMessage';
 import ReposList from '../repos-list/ReposList';
 import LoadMoreButton from '../load-more-button/LoadMoreButton';
+import SpinnerLayout from '../spinner-layout/SpinnerLayout';
 
 const ReposLayout: React.FC = () => {
   const dispatch = useDispatch();
-  const { repos, error, reposCount, isAppendReposFetching } = useSelector(
+  const {
+    orgName,
+    repos,
+    error,
+    reposCount,
+    isAppendReposFetching,
+    isReposFetching,
+  } = useSelector(
     (state: RootState) => state.github
   );
 
@@ -26,15 +34,19 @@ const ReposLayout: React.FC = () => {
   const isLoadMoreButtonDisabled = isAppendReposFetching || repos.length >= reposCount;
 
   if (error !== null) {
-    return (
-      <ErrorMessage message={error} />
-    );
+    return <ReposLayoutMessage message={error} />
+  }
+
+  if (orgName.length === 0) {
+    return <ReposLayoutMessage message={"Type some organization name"} />
   }
 
   if (repos.length === 0) {
-    return (
-      <div>no any repos</div>
-    )
+    return <ReposLayoutMessage message={`No any open repositories`} />
+  }
+
+  if (isReposFetching) {
+    return <SpinnerLayout />;
   }
 
   return (

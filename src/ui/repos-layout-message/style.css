@@ -1,4 +1,4 @@
-.error-message {
+.repos-layout-message {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.error-message__message {
+.repos-layout-message__message {
   display: block;
   width: 100%;
 
