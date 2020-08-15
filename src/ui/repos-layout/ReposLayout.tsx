@@ -33,6 +33,10 @@ const ReposLayout: React.FC = () => {
   const loadMoreButtonSign = `${repos.length}/${reposCount}`
   const isLoadMoreButtonDisabled = isAppendReposFetching || repos.length >= reposCount;
 
+  if (isReposFetching) {
+    return <SpinnerLayout />;
+  }
+
   if (error !== null) {
     return <ReposLayoutMessage message={error} />
   }
@@ -43,10 +47,6 @@ const ReposLayout: React.FC = () => {
 
   if (repos.length === 0) {
     return <ReposLayoutMessage message={`No any open repositories`} />
-  }
-
-  if (isReposFetching) {
-    return <SpinnerLayout />;
   }
 
   return (

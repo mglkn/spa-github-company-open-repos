@@ -65,6 +65,8 @@ const githubReducer = createReducer(initialState, {
   },
   [setError.type]: (state, action) => {
     state.error = action.payload;
+    state.isReposFetching = false;
+    state.isAppendReposFetching = false;
   }
 });
 

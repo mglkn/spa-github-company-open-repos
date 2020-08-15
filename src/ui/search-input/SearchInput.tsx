@@ -16,7 +16,7 @@ const SearchInput: React.FC = () => {
     e.preventDefault();
 
     const target = e.target as HTMLInputElement;
-    dispatch(changeSearchField(target.value.trim()));
+    dispatch(changeSearchField(target.value.trimLeft()));
   }
 
   return (
