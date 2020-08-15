@@ -19,7 +19,7 @@ const githubSelector = (state: RootState) => state.github
 function* fetchReposEffect() {
   const { page, orgName } = yield select(githubSelector);
   try {
-    const data = yield call(fetchRepos, orgName, page);
+    const data = yield call(fetchRepos, orgName.trim(), page);
     if (page === 1) {
       yield put(setRepos(data));
     } else {
@@ -30,12 +30,12 @@ function* fetchReposEffect() {
   }
 }
 
-function* fetchOrgEffect(action: any) {
-  const orgName = action.payload;
+function* fetchOrgEffect(action: ReturnType<typeof changeSearchField>) {
+  const orgName = action.payload.trim();
   if (orgName.length === 0) return;
 
   try {
-    const { public_repos } = yield call(fetchOrg, action.payload);
+    const { public_repos } = yield call(fetchOrg, orgName);
     yield put(setReposCount(public_repos));
     yield call(fetchReposEffect);
   } catch (e) {
@@ -49,3 +49,8 @@ function* watchGithubSaga() {
 }
 
 export default watchGithubSaga;
+
+export {
+  fetchOrgEffect,
+  fetchReposEffect,
+}
