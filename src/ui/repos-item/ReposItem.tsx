@@ -8,7 +8,11 @@ import { ReactComponent as WatchIcon } from './img/watch-icon.svg';
 import { ReactComponent as StarIcon } from './img/star-icon.svg';
 import { ReactComponent as ForkIcon } from './img/fork-icon.svg';
 
-const ReposItem: React.FC<{ item: IRepo }> = ({ item }) => {
+type IProps = {
+  item: IRepo;
+}
+
+const ReposItem: React.FC<IProps> = ({ item }: IProps) => {
   return (
     <li className="repos-item">
       <h4 className="repos-item__header">

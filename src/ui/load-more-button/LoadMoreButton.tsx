@@ -8,7 +8,7 @@ type IProps = {
   onClick: (e: React.MouseEvent) => void;
 }
 
-const LoadMoreButton: React.FC<IProps> = ({ isLoading, reposCount, onClick }) => {
+const LoadMoreButton: React.FC<IProps> = ({ isLoading, reposCount, onClick }: IProps) => {
   return (
     <button
       className="load-more-button"
