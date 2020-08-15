@@ -8,8 +8,8 @@ type IProps = {
 
 const ReposLayoutMessage: React.FC<IProps> = ({ message }: IProps) => {
   return (
-    <div className="repos-layout-message">
-      <span className="repos-layout-message__message">{message}</span>
+    <div className='repos-layout-message'>
+      <span className='repos-layout-message__message'>{message}</span>
     </div>
   );
 }

@@ -11,7 +11,7 @@ type IProps = {
 const LoadMoreButton: React.FC<IProps> = ({ isLoading, reposCount, onClick }: IProps) => {
   return (
     <button
-      className="load-more-button"
+      className='load-more-button'
       onClick={onClick}
       disabled={isLoading}>Load more {reposCount}</button>
   );

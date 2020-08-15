@@ -7,13 +7,13 @@ import ReposLayout from '../repos-layout/ReposLayout';
 
 const App: React.FC = () => {
   return (
-    <main className="app">
+    <main className='app'>
 
-      <section className="app__search-input">
+      <section className='app__search-input'>
         <SearchInput />
       </section>
 
-      <section className="app__repos">
+      <section className='app__repos'>
         <ReposLayout />
       </section>
 

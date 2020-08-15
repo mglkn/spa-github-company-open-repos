@@ -20,11 +20,11 @@ const SearchInput: React.FC = () => {
   }
 
   return (
-    <div className="search-input">
+    <div className='search-input'>
       <input
-        className="search-input__input"
-        type="text"
-        placeholder="type organization name here"
+        className='search-input__input'
+        type='text'
+        placeholder='type organization name here'
         value={orgName}
         onChange={changeHandler} />
     </div>

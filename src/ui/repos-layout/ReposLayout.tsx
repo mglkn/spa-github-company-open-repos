@@ -42,7 +42,7 @@ const ReposLayout: React.FC = () => {
   }
 
   if (orgName.length === 0) {
-    return <ReposLayoutMessage message={"Type some organization name"} />
+    return <ReposLayoutMessage message={'Type some organization name'} />
   }
 
   if (repos.length === 0) {
@@ -50,13 +50,13 @@ const ReposLayout: React.FC = () => {
   }
 
   return (
-    <div className="repos-layout">
+    <div className='repos-layout'>
 
-      <div className="repos-layout__list">
+      <div className='repos-layout__list'>
         <ReposList repos={repos} />
       </div>
 
-      <div className="repos-layout__load-more-button">
+      <div className='repos-layout__load-more-button'>
         <LoadMoreButton
           onClick={loadMoreButtonHandler}
           isLoading={isLoadMoreButtonDisabled}
