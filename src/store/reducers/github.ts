@@ -38,7 +38,7 @@ const initialState: IState = {
   isAppendReposFetching: false,
 };
 
-const github = createReducer(initialState, {
+const githubReducer = createReducer(initialState, {
   [changeSearchField.type]: (state, action) => {
     state.orgName = action.payload;
     state.isReposFetching =
@@ -69,7 +69,7 @@ const github = createReducer(initialState, {
 });
 
 export {
-  github,
+  githubReducer,
   changeSearchField,
   setRepos,
   appendRepos,

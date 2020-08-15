@@ -10,7 +10,7 @@ import {
   appendRepos,
   setError,
 } from '../reducers/github';
-import { RootState } from '..';
+import { RootState } from '../index';
 
 const INPUT_DEBOUNCE_TIME = 1000;
 

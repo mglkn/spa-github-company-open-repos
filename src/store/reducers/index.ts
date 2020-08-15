@@ -1,5 +1,7 @@
-import { github } from './github';
+import { combineReducers } from '@reduxjs/toolkit';
 
-export default {
-  github,
-};
+import { githubReducer } from './github';
+
+export default combineReducers({
+  github: githubReducer,
+});
