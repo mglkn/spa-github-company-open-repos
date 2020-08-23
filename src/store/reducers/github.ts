@@ -6,6 +6,8 @@ const setRepos = createAction<IRepo[], 'SET_REPOS'>('SET_REPOS');
 const appendRepos = createAction<IRepo[], 'APPEND_REPOS'>('APPEND_REPOS');
 const nextPage = createAction('NEXT_PAGE');
 const setError = createAction<string, 'SET_ERROR'>('SET_ERROR');
+const reposFetching = createAction('REPOS_FETCHING');
+const fetchReposNow = createAction('FETCH_REPOS_NOW');
 
 export type IRepo = {
   id: string;
@@ -41,8 +43,8 @@ const initialState: IState = {
 const githubReducer = createReducer(initialState, {
   [changeSearchField.type]: (state, action) => {
     state.orgName = action.payload;
-    state.isReposFetching =
-      action.payload.length === 0 ? false : true;
+    // state.isReposFetching =
+    //   action.payload.length === 0 ? false : true;
     state.page = 1;
     state.error = null;
   },
@@ -67,6 +69,10 @@ const githubReducer = createReducer(initialState, {
     state.error = action.payload;
     state.isReposFetching = false;
     state.isAppendReposFetching = false;
+  },
+  [reposFetching.type]: (state, _) => {
+    state.isReposFetching = true;
+    state.repos = [];
   }
 });
 
@@ -78,4 +84,6 @@ export {
   setReposCount,
   nextPage,
   setError,
+  reposFetching,
+  fetchReposNow,
 }
