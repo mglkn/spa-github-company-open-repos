@@ -27,19 +27,24 @@ const INPUT_DEBOUNCE_TIME = 1000;
 
 const githubSelector = (state: RootState) => state.github
 
-const debounce = (ms: number, pattern: string, task: any, ...args: any[]) => fork(function*() {
+const debounceOrNow = (
+  ms: number,
+  debouncedPattern: string,
+  nowPattern: string,
+  task: any
+) => fork(function*() {
   while (true) {
-    let action = yield take(pattern)
+    let action = yield take(debouncedPattern)
 
     while (true) {
       const { debounced, actionNow, latestAction } = yield race({
         debounced: delay(ms),
-        actionNow: take(fetchReposNow.type),
-        latestAction: take(pattern)
+        actionNow: take(nowPattern),
+        latestAction: take(debouncedPattern)
       })
 
       if (debounced || actionNow) {
-        yield fork(task, ...args, action)
+        yield fork(task, action)
         break
       }
 
@@ -78,7 +83,11 @@ function* fetchOrgEffect(action: ReturnType<typeof changeSearchField>) {
 }
 
 function* watchGithubSaga() {
-  yield debounce(INPUT_DEBOUNCE_TIME, changeSearchField.type, fetchOrgEffect);
+  yield debounceOrNow(
+    INPUT_DEBOUNCE_TIME,
+    changeSearchField.type,
+    fetchReposNow.type,
+    fetchOrgEffect);
   yield takeEvery(nextPage, fetchReposEffect);
 }
 
