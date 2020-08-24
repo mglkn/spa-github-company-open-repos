@@ -8,6 +8,7 @@ import {
   race,
   delay
 } from 'redux-saga/effects';
+import { Saga, SagaIterator } from '@redux-saga/core';
 
 import { fetchRepos, fetchOrg } from '../../services/api';
 
@@ -31,7 +32,7 @@ const debounceOrNow = (
   ms: number,
   debouncedPattern: string,
   nowPattern: string,
-  task: any
+  task: Saga
 ) => fork(function*() {
   while (true) {
     let action = yield take(debouncedPattern)
@@ -53,7 +54,7 @@ const debounceOrNow = (
   }
 })
 
-function* fetchReposEffect() {
+function* fetchReposEffect(): SagaIterator {
   const { page, orgName } = yield select(githubSelector);
   try {
     const data = yield call(fetchRepos, orgName.trim(), page);
@@ -67,7 +68,7 @@ function* fetchReposEffect() {
   }
 }
 
-function* fetchOrgEffect(action: ReturnType<typeof changeSearchField>) {
+function* fetchOrgEffect(action: ReturnType<typeof changeSearchField>): SagaIterator {
   const orgName = action.payload.trim();
   if (orgName.length === 0) return;
 
@@ -82,7 +83,7 @@ function* fetchOrgEffect(action: ReturnType<typeof changeSearchField>) {
   }
 }
 
-function* watchGithubSaga() {
+function* watchGithubSaga(): SagaIterator {
   yield debounceOrNow(
     INPUT_DEBOUNCE_TIME,
     changeSearchField.type,
